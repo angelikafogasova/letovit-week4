@@ -36,7 +36,7 @@ class Todo extends Component {
             <h5 className="card-title">
             {title}
             </h5>
-            <h6 className="card-subtitile text-mutedmb-2">
+            <h6 className="card-subtitile text-muted mb-2">
               Created at {createdAt}
             </h6>
             {this.renderText()}

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 
 class AddTodo extends Component {
   state = {
@@ -6,13 +7,14 @@ class AddTodo extends Component {
     text: ""
   };
 
-  handleSubmit = event => {
+  handleSubmit = async event => {
     event.preventDefault();
-    this.props.onAdd(this.state);
+    await this.props.onAdd(this.state);
     this.setState({
       title: "",
       text: ""
     });
+    this.props.history.push("/");
   };
   handleChange = event => {
     const { name, value } = event.target;
@@ -55,4 +57,4 @@ class AddTodo extends Component {
   }
 }
 
-export default AddTodo;
+export default withRouter(AddTodo);
