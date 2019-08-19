@@ -6,7 +6,7 @@ import axios from "./axios";
 
 import TodoList from "./views/TodoList";
 import AddTodo from "./views/AddTodo";
-import Navbar from "./Navbar";
+import Navbar from "./components/Navbar";
 
 class App extends Component {
   state = {
