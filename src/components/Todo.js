@@ -13,14 +13,14 @@ class Todo extends Component {
   };
 
   handleFinish = async () => {
-    await axios.patch("/todos/" + this.props.todo.id + ".json", {
+    await axios.patch("/todos/" + this.props.todo.id {
       finished: true
     });
     this.props.onFinish();
   };
 
   handleRemove = async () => {
-    await axios.delete('/todos/'+ this.props.todo.id + '.json');
+    await axios.delete('/todos/'+ this.props.todo.id);
     this.props.onRemove()
   };
 
