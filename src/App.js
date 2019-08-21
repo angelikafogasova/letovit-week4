@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { HashRouter, Switch, Route } from "react-router-dom";
 import moment from "moment";
-import findIndex from 'lodash/findIndex';
+import findIndex from "lodash/findIndex";
 import axios from "./axios";
 
 import TodoList from "./views/TodoList";
@@ -15,14 +15,13 @@ class App extends Component {
 
   async componentDidMount() {
     const result = await axios.get("/todos");
-    this.setState({todos: result.data});
-
+    this.setState({ todos: result.data });
   }
 
   addTodo = async todo => {
     const newTodo = {
       ...todo,
-      createdAt: moment().format("DD.MM.YYYY"),
+      createdAt: moment().format(),
       finished: false
     };
 
@@ -37,7 +36,7 @@ class App extends Component {
   };
 
   editTodo = todo => {
-    const index = findIndex(this.state.todos, {id: todo.id});
+    const index = findIndex(this.state.todos, { id: todo.id });
     const todos = [...this.state.todos];
     todos.splice(index, 1, todo);
     this.setState({
@@ -46,7 +45,7 @@ class App extends Component {
   };
 
   removeTodo = todo => {
-    const index = findIndex(this.state.todos, {id: todo.id});
+    const index = findIndex(this.state.todos, { id: todo.id });
     const todos = [...this.state.todos];
     todos.splice(index, 1);
     this.setState({
@@ -61,24 +60,24 @@ class App extends Component {
         <HashRouter>
           <Navbar />
           <div className="App p-3">
-          <Switch>
-            <Route
-              path="/add"
-              exact
-              render={() => <AddTodo onAdd={this.addTodo} />}
-            />
-            <Route
-              path="/"
-              exact
-              render={() => (
-                <TodoList
-                  onEdit={this.editTodo}
-                  onRemove={this.removeTodo}
-                  todos={todos}
-                />
-              )}
-            />
-          </Switch>
+            <Switch>
+              <Route
+                path="/add"
+                exact
+                render={() => <AddTodo onAdd={this.addTodo} />}
+              />
+              <Route
+                path="/"
+                exact
+                render={() => (
+                  <TodoList
+                    onEdit={this.editTodo}
+                    onRemove={this.removeTodo}
+                    todos={todos}
+                  />
+                )}
+              />
+            </Switch>
           </div>
         </HashRouter>
       </div>

@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { GoCheck } from 'react-icons/go';
+
 
 class TodoButtons extends Component {
   render () {
@@ -6,20 +8,17 @@ class TodoButtons extends Component {
     let finishButton;
     if (!finished) {
       finishButton = (
-        <button
-          type="button"
-          className="btn btn-success float-right"
-          onClick={this.props.onFinish}
-        >
-          Dokončiť
+       
+          <button id= "checkButton" type="button" class="btn btn-default btn-sm float-right"  aria-label="check" onClick={this.props.onFinish}>
+            <span aria-hidden="true"><GoCheck size="25px"/></span>
         </button>
       )
     }
 
     return (
       <>
-        <button type="button" className="btn btn-light" onClick={this.props.onRemove}>
-          Zmazať
+        <button type="button" className="close" aria-label="Close" onClick={this.props.onRemove}>
+        <span aria-hidden="true">&times;</span>
         </button>
         {finishButton}
       </>

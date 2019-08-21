@@ -7,3 +7,24 @@
   margin-left: 10px;
   margin-right: 10px;
 }
+
+.close {
+  position: absolute;
+  margin: 5px;
+  top: 5px;
+  right: 5px;
+}
+
+.link-plus {display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 45px;
+  color: rgb(179, 179, 179) }
+
+  #checkButton{
+    position: absolute;
+    margin: 5px;
+    bottom: 5px;
+    right: -8px;
+    color: rgb(148, 142, 142)
+  }
