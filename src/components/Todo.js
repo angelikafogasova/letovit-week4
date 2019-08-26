@@ -26,7 +26,7 @@ class Todo extends Component {
   };
 
   render() {
-    const { createdAt, title, finished } = this.props.todo;
+    const { createdAt, title, finished, importance } = this.props.todo;
     let classes = "card";
     if (finished) classes += " border-success";
 
@@ -41,18 +41,26 @@ class Todo extends Component {
             <h5 className="card-title">
               {title}{" "}
               {difference <= 10 && finished === false ? (
-                <span class="badge badge-primary">New</span>
+                <span className="badge badge-primary">New</span>
               ) : null}
             </h5>
             <h6 className="card-subtitile text-muted mb-2">
-              Created at {moment (createdAt).format("HH:mm DD/MM/YYYY")}
+              Created at {moment(createdAt).format("HH:mm DD/MM/YYYY")}
             </h6>
+
             {this.renderText()}
             <TodoButtons
               todo={this.props.todo}
               onFinish={this.handleFinish}
               onRemove={this.handleRemove}
             />
+          </div>
+          <div className="card-footer text-muted">
+            {importance === "Low" ? <div className="low" /> : null}
+            {importance === "Medium" ? <div className="medium" /> : null}
+            {importance === "High" ? <div className="high" /> : null}
+            {importance === "Urgent" ? <div className="urgent" /> : null}{" "}
+            {importance}
           </div>
         </div>
       </div>

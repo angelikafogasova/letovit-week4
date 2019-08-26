@@ -12,6 +12,7 @@ class TodoButtons extends Component {
           <button id= "checkButton" type="button" class="btn btn-default btn-sm float-right"  aria-label="check" onClick={this.props.onFinish}>
             <span aria-hidden="true"><GoCheck size="25px"/></span>
         </button>
+
       )
     }
 

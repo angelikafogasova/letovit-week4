@@ -4,7 +4,8 @@ import { withRouter } from "react-router-dom";
 class AddTodo extends Component {
   state = {
     title: "",
-    text: ""
+    text: "",
+    importance: ""
   };
 
   handleSubmit = async event => {
@@ -12,7 +13,8 @@ class AddTodo extends Component {
     await this.props.onAdd(this.state);
     this.setState({
       title: "",
-      text: ""
+      text: "",
+      importance: ""
     });
     this.props.history.push("/");
   };
@@ -23,7 +25,7 @@ class AddTodo extends Component {
     });
   };
   render() {
-    const { title, text } = this.state;
+    const { title, text, importance } = this.state;
 
     return (
       <form onSubmit={this.handleSubmit}>
@@ -44,6 +46,24 @@ class AddTodo extends Component {
           placeholder="Text"
           onChange={this.handleChange}
         />
+
+        <div class="form-group" name="importance">
+          <select
+            class="form-control"
+            id="exampleFormControlSelect1"
+            onChange={this.handleChange}
+            value={importance}
+            name="importance"
+          >
+            <option value="" selected disabled>
+              Please select
+            </option>
+            <option Value="Low">Low</option>
+            <option Value="Medium">Medium</option>
+            <option Value="High">High</option>
+            <option Value="Urgent">Urgent</option>
+          </select>
+        </div>
 
         <button
           type="submit"
