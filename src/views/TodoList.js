@@ -10,7 +10,8 @@ class TodoList extends Component {
     Low: true,
     Medium: true,
     High: true,
-    Urgent: true
+    Urgent: true,
+    search: ""
   };
 
   handleChecked = event => {
@@ -18,6 +19,13 @@ class TodoList extends Component {
 
     this.setState({
       [name]: checked
+    });
+  };
+  handleSearch = event => {
+    const { name, value } = event.target;
+
+    this.setState({
+      [name]: value
     });
   };
 
@@ -64,9 +72,22 @@ class TodoList extends Component {
       });
       finalTodos = finalTodos.concat(filteredCheck);
     }
-
+    const { search } = this.state;
+    if (search !== "") {
+      finalTodos = finalTodos.filter(todo => {
+        return todo.title.includes(search) || todo.text.includes(search);
+      });
+    }
     return (
       <>
+        <input
+          className="form-control mb-2"
+          type="text"
+          name="search"
+          placeholder="Search ... "
+          onChange={this.handleSearch}
+          value={search}
+        />
         <div>
           <span className="filter">
             <input

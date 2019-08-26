@@ -5,18 +5,27 @@ class AddTodo extends Component {
   state = {
     title: "",
     text: "",
-    importance: ""
+    importance: "",
+    error: ""
   };
 
   handleSubmit = async event => {
     event.preventDefault();
-    await this.props.onAdd(this.state);
-    this.setState({
-      title: "",
-      text: "",
-      importance: ""
-    });
-    this.props.history.push("/");
+    try {
+      await this.props.onAdd(this.state);
+      this.setState({
+        title: "",
+        text: "",
+        importance: "",
+        error: ""
+      });
+
+      this.props.history.push("/");
+    } catch (error) {
+      let temp = this.state;
+      temp.error = "Wrong format";
+      this.setState(temp);
+    }
   };
   handleChange = event => {
     const { name, value } = event.target;
@@ -29,6 +38,11 @@ class AddTodo extends Component {
 
     return (
       <form onSubmit={this.handleSubmit}>
+        {this.state.error === "" ? null : (
+          <div class="alert alert-danger" role="alert">
+            {this.state.error}
+          </div>
+        )}
         <input
           className="form-control mb-2"
           type="text"

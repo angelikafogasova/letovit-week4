@@ -14,7 +14,9 @@
     "react-icons": "^3.7.0",
     "react-masonry-component": "^6.2.1",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "react-search-box": "^2.0.1",
+    "react-search-field": "^1.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
